@@ -1,6 +1,11 @@
 {
   "name": "board_client",
   "version": "1.0.0",
+  "babel": {
+    "presets": [
+      "latest"
+    ]
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,5 +20,16 @@
   "bugs": {
     "url": "https://github.com/EvgeniyTT/boardClient/issues"
   },
-  "homepage": "https://github.com/EvgeniyTT/boardClient#readme"
+  "homepage": "https://github.com/EvgeniyTT/boardClient#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "angular": "^1.5.8",
+    "babel-cli": "^6.16.0",
+    "babel-preset-latest": "^6.16.0",
+    "jquery": "^3.1.1",
+    "jquery-ui-dist": "^1.12.1"
+  }
 }
