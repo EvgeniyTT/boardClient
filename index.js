@@ -1,3 +1,9 @@
+import ng from 'angular';
+import taskPanelDirective from './task.panel';
+
+ng.model('main',[taskPanelDirective]);
+
+
 window.addEventListener('load',function(){
   const button = document.querySelector('button');
   const responsesDiv = document.querySelector('div.responses');
