@@ -1,0 +1,9 @@
+.taskColumn {
+  background-color: #ddd;
+  margin: 20 10;
+}
+
+.taskColumn ul {
+  margin: 20 0;
+  padding: 0;
+}
