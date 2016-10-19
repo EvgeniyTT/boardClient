@@ -1,3 +1,12 @@
-<div class="card">
-
+<div class="card container">
+    <div class="row">
+      <div class="col-xs-1">Priority</div>
+      <div class="col-xs-8">Name</div>
+      <div class="col-xs-3">Assigned</div>
+    </div>
+    <p>Current Column</p>
+    <span></span>
+    <input type="form"></input>
+    <button ng-click="isEdited = false">X</button>
+    <button ng-click="taskCardController.changeName()">ChangeName</button>
 </div>

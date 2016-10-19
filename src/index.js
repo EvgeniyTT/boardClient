@@ -21,7 +21,6 @@ window.addEventListener('load',function(){
 
   const socket = new WebSocket("ws://localhost:8081");
   let i = 0;
-  console.log(button);
   button.addEventListener('click', function() {
     var outgoingMessage = `START`;
     console.log('outgoingMessage: ', outgoingMessage);

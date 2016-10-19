@@ -10,7 +10,6 @@ export default class TaskColumnController {
 
   $onInit() {
     //DRAGO-DROPABLE PART
-    console.log($(this.$element).find('ul'));
     $(this.$element).find('ul').sortable({
       connectWith: 'ul',
       receive: function(event, ui) {
@@ -65,6 +64,20 @@ export default class TaskColumnController {
       localStor.setItem('listObject', JSON.stringify(listObject));
     }
 
+  }
+
+  addTask() {
+    this.column.tasks.push(
+      {
+        task: 'do the dishes',
+        priority: 7,
+        assign: 'wife'
+      }
+    )
+  }
+
+  deleteTask(task) {
+    this.column.tasks = this.column.tasks.filter(item => item != task);
   }
 
   $onDestroy() {

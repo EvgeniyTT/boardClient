@@ -1,6 +1,9 @@
 <div class="taskColumn col-xs-12 col-sm-4 col-lg-3">
   <p>{{taskColumnController.column.columnName}}</p>
   <ul>
-      <task-panel ng-repeat="task in taskColumnController.column.tasks"></task-panel>
+      <task-panel ng-repeat="task in taskColumnController.column.tasks" delete-task="taskColumnController.deleteTask(task)"></task-panel>
   </ul>
+  <button type="button" class="btn btn-default" ng-click="taskColumnController.addTask()">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  </button>
 </div>

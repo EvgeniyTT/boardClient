@@ -7,3 +7,13 @@
   margin: 20 0;
   padding: 0;
 }
+
+task-card {
+  position: static;
+}
+
+/*.card {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+}*/

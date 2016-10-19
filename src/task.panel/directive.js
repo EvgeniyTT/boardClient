@@ -5,5 +5,9 @@ export default () => ({
   restrict: 'E',
   template,
   controller,
-  controllerAs: 'taskPanelController'
+  controllerAs: 'taskPanelController',
+  scope: {
+    deleteTask: '&',
+  },
+  bindToController: true
 });
