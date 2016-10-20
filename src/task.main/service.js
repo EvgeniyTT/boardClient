@@ -32,9 +32,20 @@ export default class taskService {
         columnName: 'To DO',
         tasks : [
             {
-              task: 'do the dishes',
-              priority: 2,
-              assign: 'wife'
+              name: 'do the dishes',
+              priority: 'Major',
+              assign: 'wife',
+              description: 'a lot of text for description a lot of text for description a lot of text for description a lot of text for description',
+              checklist: [
+                {checked: true, item: 'do something first'},
+                {checked: true, item: 'do something next'},
+                {checked: false, item: 'finish with nothing'}
+              ],
+              comments: [
+                {author: 'Petr Ivanovich', date: '10/16/2016 14:24', text: 'Can not belive you are going to do this'},
+                {author: 'Maria Colovratovna', date: '10/16/2016 13:32', text: 'You need to fill up a form to start doing something'},
+                {author: 'Izya Evreevich', date: '10/14/2016 12:24', text: 'What will we have from this task?'}
+              ]
             }
           ]
       },
@@ -43,14 +54,36 @@ export default class taskService {
         columnName: 'In-Progress',
         tasks : [
             {
-              task: 'buy gun to kill them all',
-              priority: 4,
-              assign: 'me'
+              name: 'buy gun to kill them all',
+              priority: 'Trivial',
+              assign: 'me',
+              description: 'a lot of text for description a lot of text for description a lot of text for description a lot of text for description',
+              checklist: [
+                {checked: true, item: 'do something first'},
+                {checked: true, item: 'do something next'},
+                {checked: false, item: 'finish with nothing'}
+              ],
+              comments: [
+                {author: 'Petr Ivanovich', date: '10/16/2016 14:24', text: 'Can not belive you are going to do this'},
+                {author: 'Maria Colovratovna', date: '10/16/2016 13:32', text: 'You need to fill up a form to start doing something'},
+                {author: 'Izya Evreevich', date: '10/14/2016 12:24', text: 'What will we have from this task?'}
+              ]
             },
             {
-              task: 'make a trello clone',
-              priority: 1,
-              assign: 'me'
+              name: 'make a trello clone',
+              priority: 'Critical',
+              assign: 'me',
+              description: 'a lot of text for description a lot of text for description a lot of text for description a lot of text for description',
+              checklist: [
+                {checked: true, item: 'do something first'},
+                {checked: true, item: 'do something next'},
+                {checked: false, item: 'finish with nothing'}
+              ],
+              comments: [
+                {author: 'Petr Ivanovich', date: '10/16/2016 14:24', text: 'Can not belive you are going to do this'},
+                {author: 'Maria Colovratovna', date: '10/16/2016 13:32', text: 'You need to fill up a form to start doing something'},
+                {author: 'Izya Evreevich', date: '10/14/2016 12:24', text: 'What will we have from this task?'}
+              ]
             }
           ]
       },
@@ -59,9 +92,20 @@ export default class taskService {
         columnName: 'Done',
         tasks : [
             {
-              task: 'clean the room',
-              priority: 3,
-              assign: 'wife'
+              name: 'clean the room',
+              priority: 'Minor',
+              assign: 'wife',
+              description: 'a lot of text for description a lot of text for description a lot of text for description a lot of text for description',
+              checklist: [
+                {checked: true, item: 'do something first'},
+                {checked: true, item: 'do something next'},
+                {checked: false, item: 'finish with nothing'}
+              ],
+              comments: [
+                {author: 'Petr Ivanovich', date: '10/16/2016 14:24', text: 'Can not belive you are going to do this'},
+                {author: 'Maria Colovratovna', date: '10/16/2016 13:32', text: 'You need to fill up a form to start doing something'},
+                {author: 'Izya Evreevich', date: '10/14/2016 12:24', text: 'What will we have from this task?'}
+              ]
             }
           ]
       }

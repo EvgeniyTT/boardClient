@@ -1,12 +1,61 @@
 <div class="card container">
     <div class="row">
-      <div class="col-xs-1">Priority</div>
-      <div class="col-xs-8">Name</div>
-      <div class="col-xs-3">Assigned</div>
+      <div class="col-xs-1">
+        <select class="priorityDropdown" ng-model="taskCardController.task.priority">
+          <option value="Critical">Critical</option>
+          <option value="Major">Major</option>
+          <option value="Minor">Minor</option>
+          <option value="Trivial">Trivial</option>
+        </select>
+      </div>
+      <div class="col-xs-8">
+        <input ng-model="taskCardController.task.name"/>
+      </div>
+      <div class="col-xs-2">
+        <input ng-model="taskCardController.task.assign"/>
+      </div>
+      <div class="col-xs-1">
+        <button ng-click="isEdited = false">X</button>
+      </div>
     </div>
-    <p>Current Column</p>
-    <span></span>
-    <input type="form"></input>
-    <button ng-click="isEdited = false">X</button>
-    <button ng-click="taskCardController.changeName()">ChangeName</button>
+    </br>
+    <button>Clone</button>
+    </br>
+    <p>Description</p>
+    <textarea ng-model="taskCardController.task.description">{{taskCardController.task.description}}</textarea>
+    </br>
+    <button ng-click="taskCardController.addChecklist()" ng-disabled="taskCardController.task.checklist">Add Checklist</button>
+    <button ng-click="taskCardController.removeChecklist()" ng-disabled="!taskCardController.task.checklist">Remove Checklist</button>
+    <div class="checklist" ng-show="taskCardController.task.checklist">
+      </br>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{taskCardController.checklistProgress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{taskCardController.checklistProgress}}%;">
+          {{taskCardController.checklistProgress}}%
+        </div>
+      </div>
+      <div class="checkbox" ng-repeat="checkbox in taskCardController.task.checklist">
+        <input type="checkbox" ng-checked="checkbox.checked" ng-model="checkbox.checked" ng-click="taskCardController.calculateChecklistProgress()"/>
+        <input type="text" ng-model="checkbox.item"/>
+        <a ng-click="taskCardController.removeCheckbox(checkbox)">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+      </div>
+      <a  ng-click="taskCardController.addCheckbox()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </a>
+    </div>
+    </br>
+    <p>Add Comment</p>
+    <textarea placeholder="Write your comment..." ng-model="comment">{{comment}}</textarea>
+    <button ng-click="taskCardController.addComment(comment)">Add comment</button>
+    <p>Comments</p>
+    <div class="comments">
+      <div class="comment" ng-repeat="comment in taskCardController.task.comments">
+        <span>{{comment.author}}</span>
+        <span>{{comment.date}}</span>
+        <p>{{comment.text}}</p>
+      </div>
+    </div>
+
+    <button ng-click="taskCardController.saveTask()">SAVE</button>
 </div>
