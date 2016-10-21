@@ -18,6 +18,7 @@
   "homepage": "https://github.com/EvgeniyTT/boardClient#readme",
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-ui-sortable": "^0.15.0",
     "bootstrap": "^3.3.7",
     "cors": "^2.8.1",
     "jquery": "^3.1.1"

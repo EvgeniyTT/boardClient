@@ -6,7 +6,7 @@ export default class TaskMainController {
   }
 
   $onInit() {
-    this.columnTasks = this.taskService.list();
+    this.boardData = this.taskService.list();
   }
 
   $onDestroy() {

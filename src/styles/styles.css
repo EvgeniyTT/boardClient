@@ -1,3 +1,5 @@
+
+/*COLUMN*/
 .taskColumn {
   background-color: #ddd;
   margin: 20 10;
@@ -8,17 +10,22 @@
   padding: 0;
 }
 
-/*task-card {
-  position: static;
-}*/
+.column {
+  min-height:50px;
+}
 
-/*.card {
-  position: absolute;
-  left: 50px;
-  top: 50px;
-}*/
+/*PANEL*/
+.panel-placeholder {
+  display: block;
+  width: 263px;
+  height: 50px;
+  margin: 10px 0;
+  border: 2px solid #558bb9;
+  border-radius: 3px;
+  background-color: #7a9cb9;
+}
 
-
+/*TASK CARD*/
 task-card {
   position: fixed;
   font-family: Arial, Helvetica, sans-serif;
@@ -31,7 +38,6 @@ task-card {
   display: block;
   /*pointer-events: auto;*/
 }
-
 
 task-card .card {
   width: 800px;
@@ -50,7 +56,6 @@ task-card .card {
   -moz-box-shadow: 0 0 10px #000000;
   -webkit-box-shadow: 0 0 10px #000000;
 }
-
 
 task-card:target .card {
   top: -90px;

@@ -1,24 +1,52 @@
-import 'jquery-ui-dist/jquery-ui.min';
-import $ from  'jquery/dist/jquery';
-
 export default class TaskColumnController {
   constructor($window, $document, $element, $scope) {
     'ngInject';
     this.column = $scope.column;
+    this.$scope = $scope;
     this.$element = $element[0];
   }
 
   $onInit() {
     //DRAGO-DROPABLE PART
-    $(this.$element).find('ul').sortable({
-      connectWith: 'ul',
-      receive: function(event, ui) {
-        // handleStatusChange(event, ui, this);
-      },
-      update: function() {
-        // saveSort();
+    // $(this.$element).find('ul').sortable({
+    //   connectWith: 'ul',
+    //   placeholder: 'sortable-placeholder',
+    //   receive: function(event, ui) {
+    //     console.log('RECEIVE');
+    //     console.log('event', event);
+    //     console.log('this', this);
+    //     console.log('ui', ui);
+    //     console.log('ui.helper', ui.helper);
+    //     console.log('ui.item', ui.item);
+    //     console.log('ui.sander', ui.sander);
+    //     // handleStatusChange(event, ui, this);
+    //   },
+    //   remove: function(event, ui) {
+    //     console.log('REMOVE');
+    //     console.log('event', event);
+    //     console.log('this', this);
+    //     console.log('ui', ui);
+    //     console.log('ui.helper', ui.helper);
+    //     console.log('ui.item', ui.item);
+    //     // handleStatusChange(event, ui, this);
+    //   },
+    //   update: function() {
+    //     console.log('UPDATE');
+    //     // saveSort();
+    //   }
+    // });
+
+    this.sortableOptions = {
+      placeholder: "panel-placeholder",
+      connectWith: ".column",
+      update: (event, ui) => {
+        // console.log('event', event);
+        // console.log('ui', ui);
+        // console.log('this', this);
+        // console.log('this', this.column);
+        console.log('$scope', this.$scope);
       }
-    });
+    };
 
     function handleStatusChange(event, ui, sortElement) {
       var newStatus;

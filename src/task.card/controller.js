@@ -5,8 +5,13 @@ export default class TaskCardController {
     this.calculateChecklistProgress();
   }
   calculateChecklistProgress() {
-    let doneCheklistItems = this.task.checklist.filter(item => item.checked)
-    this.checklistProgress = ((doneCheklistItems.length/this.task.checklist.length)*100).toFixed(2);
+    if(this.task.checklist) {
+      let doneCheklistItems = this.task.checklist.filter(item => item.checked)
+      this.checklistProgress = ((doneCheklistItems.length/this.task.checklist.length)*100).toFixed(2);
+    } else {
+        this.checklistProgress = 0;
+    }
+
   }
   addChecklist(){
     this.task.checklist=[];
