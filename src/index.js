@@ -15,32 +15,32 @@ import taskMain from './task.main';
 ng.module('app', [taskPanel, taskCard, taskColumn, taskMain]);
 
 
-window.addEventListener('load',function(){
-  const button = document.querySelector('button');
-  const responsesDiv = document.querySelector('div.responses');
-
-  const socket = new WebSocket("ws://localhost:8081");
-  let i = 0;
-  button.addEventListener('click', function() {
-    var outgoingMessage = `START`;
-    console.log('outgoingMessage: ', outgoingMessage);
-    socket.send(outgoingMessage);
-    i++;
-    return false;
-  });
-
-  // обработчик входящих сообщений
-  socket.addEventListener('message', function(event) {
-    const incomingMessage = event.data;
-    console.log('incomingMessage:', incomingMessage);
-    showMessage(incomingMessage);
-  });
-
-  // показать сообщение
-  function showMessage(message) {
-    const messageElem = document.createElement('p');
-    messageElem.textContent = message;
-    responsesDiv.appendChild(messageElem);
-  }
-
-})
+// window.addEventListener('load',function(){
+//   const button = document.querySelector('button');
+//   const responsesDiv = document.querySelector('div.responses');
+//
+//   const socket = new WebSocket('ws://localhost:3040');
+//   let i = 0;
+//   button.addEventListener('click', function() {
+//     var outgoingMessage = `START`;
+//     console.log('outgoingMessage: ', outgoingMessage);
+//     socket.send(outgoingMessage);
+//     i++;
+//     return false;
+//   });
+//
+//   // обработчик входящих сообщений
+//   socket.addEventListener('message', function(event) {
+//     const incomingMessage = event.data;
+//     console.log('incomingMessage:', incomingMessage);
+//     showMessage(incomingMessage);
+//   });
+//
+//   // показать сообщение
+//   function showMessage(message) {
+//     const messageElem = document.createElement('p');
+//     messageElem.textContent = message;
+//     responsesDiv.appendChild(messageElem);
+//   }
+//
+// })

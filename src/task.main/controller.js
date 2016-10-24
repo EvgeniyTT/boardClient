@@ -1,12 +1,14 @@
 
 export default class TaskMainController {
-  constructor(taskService) {
+  constructor(taskService, $scope) {
     'ngInject';
     this.taskService = taskService;
+    this.$scope = $scope;
   }
 
   $onInit() {
-    this.boardData = this.taskService.list();
+    this.taskService.list(235634745);
+    this.boardData = this.taskService.boardData;
   }
 
   $onDestroy() {
