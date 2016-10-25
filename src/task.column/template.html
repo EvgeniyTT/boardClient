@@ -3,7 +3,8 @@
   <ul class="column" ui-sortable="taskColumnController.sortableOptions" ng-model="taskColumnController.column.tasks">
       <task-panel ng-repeat="task in taskColumnController.column.tasks" delete-task="taskColumnController.deleteTask(task)"></task-panel>
   </ul>
-  <button type="button" class="btn btn-default" ng-click="taskColumnController.addTask()">
+  <button type="button" class="btn btn-default" ng-click="isAdded = true">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   </button>
+  <task-card ng-show="isAdded" add-task="taskColumnController.addTask(task)"></task-card>
 </div>

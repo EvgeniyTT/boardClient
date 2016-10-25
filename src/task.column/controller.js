@@ -17,14 +17,9 @@ export default class TaskColumnController {
     };
   }
 
-  addTask() {
-    this.column.tasks.push(
-      {
-        task: 'do the dishes',
-        priority: 7,
-        assign: 'wife'
-      }
-    )
+  addTask(task) {
+    console.log('COLUMN CONTROLLER, task: ', task);
+    this.column.tasks.push(task)
   }
 
   deleteTask(task) {

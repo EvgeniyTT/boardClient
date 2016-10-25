@@ -5,5 +5,9 @@ export default () => ({
   restrict: 'E',
   template,
   controller,
-  controllerAs: 'taskCardController'
+  controllerAs: 'taskCardController',
+  scope: {
+    addTask: '&'
+  },
+  bindToController: true
 });

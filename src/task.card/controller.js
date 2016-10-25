@@ -1,39 +1,67 @@
+const newTask = {
+  name: 'New Task',
+  priority: 'Minor',
+  assign: '',
+  description: 'a lot of text for description a lot of text for description a lot of text for description a lot of text for description',
+  comments: []
+}
+
 export default class TaskCardController {
-  constructor($window, $document, $element, $scope) {
+  constructor($scope, taskService) {
     'ngInject';
-    this.task = $scope.taskPanelController.task;
+    this.taskService = taskService;
+    if ($scope.taskPanelController) {
+      this.task = $scope.taskPanelController.task;
+    } else {
+      this.isNewTask = true;
+      this.task = newTask;
+    }
+
+  }
+
+  $onInit() {
+    this.taskUpdate = Object.assign({}, this.task);
     this.calculateChecklistProgress();
   }
+
   calculateChecklistProgress() {
-    if(this.task.checklist) {
-      let doneCheklistItems = this.task.checklist.filter(item => item.checked)
-      this.checklistProgress = ((doneCheklistItems.length/this.task.checklist.length)*100).toFixed(2);
+    if(this.taskUpdate.checklist) {
+      let doneCheklistItems = this.taskUpdate.checklist.filter(item => item.checked)
+      this.checklistProgress = ((doneCheklistItems.length/this.taskUpdate.checklist.length)*100).toFixed(2);
     } else {
         this.checklistProgress = 0;
     }
 
   }
   addChecklist(){
-    this.task.checklist=[];
+    this.taskUpdate.checklist=[];
   }
   removeChecklist() {
-    this.task.checklist=null;
-    this.checklistProgress=0;
+    this.taskUpdate.checklist=null;
+    this.taskUpdate.checklistProgress=0;
   }
   addCheckbox() {
-    this.task.checklist.push({checked: false, item: ''});
+    this.taskUpdate.checklist.push({checked: false, item: ''});
     this.calculateChecklistProgress();
   }
   removeCheckbox(checkbox) {
-    this.task.checklist = this.task.checklist.filter(item => item != checkbox);
+    this.taskUpdate.checklist = this.taskUpdate.checklist.filter(item => item != checkbox);
     this.calculateChecklistProgress();
   }
   addComment(commentText) {
     const comment = {author: 'Greg Mitro', date: '10/16/2016 14:24', text: commentText};
-    this.task.comments.push(comment);
+    this.taskUpdate.comments.push(comment);
   }
   saveTask() {
-    //submit data to the server
+    Object.assign(this.task, this.taskUpdate);
+    if(this.isNewTask) {
+      console.log('CARD CONTROLLER, this.task: ', this.task);
+      this.addTask(this.task);
+    }
+    this.taskService.update();
+  }
+  discardChanges() {
+    this.taskUpdate = Object.assign({}, this.task);
   }
   $onDestroy() {
     // remove event listeners

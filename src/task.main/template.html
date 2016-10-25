@@ -2,4 +2,7 @@
   <div class="row columns" >
     <task-column ng-repeat="column in taskMainController.boardData"></task-column>
   </div>
+  <button type="button" class="btn btn-default" ng-click="taskMainController.addColumn()">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  </button>
 </div>
