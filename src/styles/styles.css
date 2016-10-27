@@ -1,6 +1,20 @@
 
+body {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+/*MAIN*/
+.columns {
+  display: inline-block;
+}
+
+.add-column {
+  display: inline-block;
+}
+
 /*COLUMN*/
 .taskColumn {
+  display: inline-block;
   background-color: #ddd;
   margin: 20 10;
 }

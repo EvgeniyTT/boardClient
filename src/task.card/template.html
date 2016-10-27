@@ -15,7 +15,7 @@
         <input ng-model="taskCardController.taskUpdate.assign"/>
       </div>
       <div class="col-xs-1">
-        <button ng-click="isEdited = false; isAdded = false; taskCardController.discardChanges()">X</button>
+        <button ng-click="taskCardController.discardChanges()">X</button>
       </div>
     </div>
     </br>
@@ -57,6 +57,5 @@
       </div>
     </div>
 
-    <button  ng-click="isEdited = false; isAdded = false; taskCardController.saveTask()">SAVE</button>
-    <button  ng-click="isEdited = false; isAdded = false; taskCardController.addTask(this)">ADD</button>
+    <button ng-click="taskCardController.saveTask()">SAVE</button>
 </div>

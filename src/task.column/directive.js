@@ -5,5 +5,10 @@ export default () => ({
   restrict: 'E',
   template,
   controller,
-  controllerAs: 'taskColumnController'
+  controllerAs: 'taskColumnController',
+  scope: {
+    deleteColumn: '&',
+    column: '='
+  },
+  bindToController: true
 });

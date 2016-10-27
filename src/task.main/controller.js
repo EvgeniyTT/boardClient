@@ -1,5 +1,5 @@
 const newColumn = {
-  // columnIndex: 4,
+  columnIndex: 4,
   columnName: 'New Column',
   tasks: []
 }
@@ -12,18 +12,25 @@ export default class TaskMainController {
   }
 
   $onInit() {
-    this.taskService.list(235634745);
-    this.boardData = this.taskService.boardData;
+    this.board = this.taskService.board;
+    this.boards = this.taskService.boards;
   }
+
+  
 
   addColumn() {
     // try-catch here doesn't work, error is thrown from another place
     try {
-      this.boardData.push(newColumn);
+      this.board.data.push(newColumn);
     } catch (e) {
-      console.log('You already have an empty column');
     }
+    this.taskService.update();
+  }
 
+  deleteColumn(column) {
+    let columnIndex = this.board.data.indexOf(column);
+    this.board.data.splice(columnIndex, 1);
+    this.taskService.update();
   }
 
   $onDestroy() {

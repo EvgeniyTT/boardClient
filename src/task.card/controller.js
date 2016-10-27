@@ -1,22 +1,7 @@
-const newTask = {
-  name: 'New Task',
-  priority: 'Minor',
-  assign: '',
-  description: 'a lot of text for description a lot of text for description a lot of text for description a lot of text for description',
-  comments: []
-}
-
 export default class TaskCardController {
-  constructor($scope, taskService) {
+  constructor(taskService) {
     'ngInject';
     this.taskService = taskService;
-    if ($scope.taskPanelController) {
-      this.task = $scope.taskPanelController.task;
-    } else {
-      this.isNewTask = true;
-      this.task = newTask;
-    }
-
   }
 
   $onInit() {
@@ -53,15 +38,16 @@ export default class TaskCardController {
     this.taskUpdate.comments.push(comment);
   }
   saveTask() {
-    Object.assign(this.task, this.taskUpdate);
-    if(this.isNewTask) {
-      console.log('CARD CONTROLLER, this.task: ', this.task);
-      this.addTask(this.task);
+    Object.assign(this.task, this.taskUpdate); // [Evgeniy Tatarin - 10/26/2016] apply updates to initial task
+    if(this.isNew) {
+      this.addTask(this);
     }
     this.taskService.update();
+    this.isCardShown = false;
   }
   discardChanges() {
-    this.taskUpdate = Object.assign({}, this.task);
+    this.taskUpdate = Object.assign({}, this.task); // [Evgeniy Tatarin - 10/26/2016] reset to initial task
+    this.isCardShown = false;
   }
   $onDestroy() {
     // remove event listeners

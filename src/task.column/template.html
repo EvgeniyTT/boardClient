@@ -1,10 +1,15 @@
-<div class="taskColumn col-xs-12 col-sm-4 col-lg-3">
-  <p>{{taskColumnController.column.columnName}}</p>
+<div class="taskColumn">
+  <input ng-model="taskColumnController.column.columnName"/>
+  <button type="button" class="btn btn-default" ng-click="taskColumnController.deleteColumn(this)">
+    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+  </button>
   <ul class="column" ui-sortable="taskColumnController.sortableOptions" ng-model="taskColumnController.column.tasks">
-      <task-panel ng-repeat="task in taskColumnController.column.tasks" delete-task="taskColumnController.deleteTask(task)"></task-panel>
+      <task-panel ng-repeat="task in taskColumnController.column.tasks" task="task" delete-task="taskColumnController.deleteTask(task)"></task-panel>
   </ul>
-  <button type="button" class="btn btn-default" ng-click="isAdded = true">
+  <button type="button" class="btn btn-default" ng-click="isCardShown = true">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   </button>
-  <task-card ng-show="isAdded" add-task="taskColumnController.addTask(task)"></task-card>
+  <task-card ng-show="isCardShown" is-card-shown="isCardShown" is-new="true" 
+    task="taskColumnController.newTask" add-task="taskColumnController.addTask(task)">
+  </task-card>
 </div>

@@ -1,8 +1,24 @@
-<div class="container">
-  <div class="row columns" >
-    <task-column ng-repeat="column in taskMainController.boardData"></task-column>
+<!-- <div class="container"> -->
+  <div class="boards">
+    <ul>
+      <li ng-repeat="board in taskMainController.boards">
+        <button ng-click="taskMainController.taskService.getBoard(board._id)">{{board.name}}</button>
+        <button ng-click="taskMainController.taskService.deleteBoard(board._id)">deleteBoard</button>
+      </li>
+    </ul>
+    <input ng-model="taskMainController.newBoardName"/>
+    <button type="button" class="btn btn-default btn-lg add-column"
+      ng-click="taskMainController.taskService.addBoard(taskMainController.newBoardName)">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button>
   </div>
-  <button type="button" class="btn btn-default" ng-click="taskMainController.addColumn()">
+  <h2>{{taskMainController.board.name}}</h2>
+  <div class="row columns" >
+    <task-column ng-repeat="column in taskMainController.board.data"
+      column="column" delete-column="taskMainController.deleteColumn(column)">
+    </task-column>
+  </div>
+  <button type="button" class="btn btn-default btn-lg add-column" ng-click="taskMainController.addColumn()">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   </button>
-</div>
+<!-- </div> -->

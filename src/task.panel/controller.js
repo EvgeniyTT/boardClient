@@ -1,7 +1,6 @@
 export default class TaskPanelController {
-  constructor($window, $document, $element, $scope) {
+  constructor() {
     'ngInject';
-    this.task = $scope.$parent.task;
   }
 
   $onDestroy() {

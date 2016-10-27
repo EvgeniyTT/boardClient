@@ -7,7 +7,10 @@ export default () => ({
   controller,
   controllerAs: 'taskCardController',
   scope: {
-    addTask: '&'
+    addTask: '&',
+    task: '=',
+    isNew: '=',
+    isCardShown: '='
   },
   bindToController: true
 });

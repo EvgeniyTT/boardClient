@@ -7,7 +7,8 @@ export default () => ({
   controller,
   controllerAs: 'taskPanelController',
   scope: {
-    deleteTask: '&'
+    deleteTask: '&',
+    task: '='
   },
   bindToController: true
 });
