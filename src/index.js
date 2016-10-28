@@ -10,9 +10,10 @@ import taskPanel from './task.panel';
 import taskCard from './task.card';
 import taskColumn from './task.column';
 import taskMain from './task.main';
+import boards from './boards'
 
 
-ng.module('app', [taskPanel, taskCard, taskColumn, taskMain]);
+ng.module('app', [boards, taskPanel, taskCard, taskColumn, taskMain]);
 
 
 // window.addEventListener('load',function(){

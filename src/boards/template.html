@@ -1,0 +1,18 @@
+<div class="boards" id="boards" >
+  <a href="#" class="close">X</a>
+  <input type="text" class="search" placeholder="Search for...">
+  <h4>Privat boards</h4>
+  <h4>Public boards</h4>
+  <div ng-repeat="board in boardsController.boards">
+    <a href="#" ng-click="boardsController.taskService.getBoard(board._id)">{{board.name}}</a>
+    <button type="button" class="btn btn-danger" ng-click="boardsController.taskService.deleteBoard(board._id)">
+      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    </button>
+  </div>
+  <h4>Add board</h4>
+  <input ng-model="boardsController.newBoardName"/>
+  <button type="button" class="btn btn-danger btn-lg add-column circle"
+    ng-click="boardsController.taskService.addBoard(boardsController.newBoardName)">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  </button>
+</div>

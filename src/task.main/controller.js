@@ -13,10 +13,7 @@ export default class TaskMainController {
 
   $onInit() {
     this.board = this.taskService.board;
-    this.boards = this.taskService.boards;
   }
-
-  
 
   addColumn() {
     // try-catch here doesn't work, error is thrown from another place
