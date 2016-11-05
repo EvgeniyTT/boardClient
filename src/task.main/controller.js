@@ -1,8 +1,3 @@
-const newColumn = {
-  columnIndex: 4,
-  columnName: 'New Column',
-  tasks: []
-}
 
 export default class TaskMainController {
   constructor(taskService, $scope) {
@@ -16,11 +11,11 @@ export default class TaskMainController {
   }
 
   addColumn() {
-    // try-catch here doesn't work, error is thrown from another place
-    try {
-      this.board.data.push(newColumn);
-    } catch (e) {
-    }
+    this.board.data.push({
+      columnName: 'New Column',
+      tasks: []
+    });
+
     this.taskService.update();
   }
 
@@ -28,11 +23,6 @@ export default class TaskMainController {
     let columnIndex = this.board.data.indexOf(column);
     this.board.data.splice(columnIndex, 1);
     this.taskService.update();
-  }
-
-  $onDestroy() {
-    // remove event listeners
-    // this.$document.removeEventListener('scroll', this.scrollListener);
   }
 
 }

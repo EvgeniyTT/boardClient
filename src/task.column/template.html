@@ -1,8 +1,13 @@
 <div class="taskColumn">
   <input type="text" ng-model="taskColumnController.column.columnName" ng-blur="taskColumnController.taskService.update()"/>
-  <button type="button" class="btn btn-danger circle" ng-click="taskColumnController.deleteColumn(this)">
+  <button type="button" class="btn btn-danger circle" ng-click="deleteConfirm = true">
     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
   </button>
+  <div class="delete-confirm" ng-show="deleteConfirm">
+    <p>Remove column "{{taskColumnController.column.columnName}}" with all tasks ?</p>
+    <button type="button" class="btn btn-danger" ng-click="deleteConfirm = false">Cancel</button>
+    <button type="button" class="btn btn-danger" ng-click="deleteConfirm = false; taskColumnController.deleteColumn(this)">Remove</button>
+  </div>
   <ul class="column" ui-sortable="taskColumnController.sortableOptions" ng-model="taskColumnController.column.tasks">
       <task-panel ng-repeat="task in taskColumnController.column.tasks" task="task" delete-task="taskColumnController.deleteTask(task)"></task-panel>
   </ul>

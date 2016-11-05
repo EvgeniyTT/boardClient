@@ -1,16 +1,15 @@
-const newTask = {
-  name: 'New Task',
-  priority: 'Minor',
-  assign: '',
-  description: 'a lot of text for description a lot of text for description a lot of text for description a lot of text for description',
-  comments: []
-}
 
 export default class TaskColumnController {
   constructor(taskService) {
     'ngInject';
     this.taskService = taskService;
-    this.newTask = newTask;
+    this.newTask = {
+      name: 'New Task',
+      priority: 'Minor',
+      assign: '',
+      description: '',
+      comments: []
+    };
   }
 
   $onInit() {
@@ -18,7 +17,7 @@ export default class TaskColumnController {
     this.sortableOptions = {
       placeholder: "panel-placeholder",
       connectWith: ".column",
-      update: (event, ui) => {
+      stop: (event, ui) => {
         this.taskService.update();
       }
     };
@@ -31,11 +30,6 @@ export default class TaskColumnController {
   deleteTask(task) {
     this.column.tasks = this.column.tasks.filter(item => item != task);
     this.taskService.update();
-  }
-
-  $onDestroy() {
-    // remove event listeners
-    // this.$document.removeEventListener('scroll', this.scrollListener);
   }
 
 }

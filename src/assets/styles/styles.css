@@ -1,7 +1,6 @@
 
 body {
   padding-top: 53px;
-  padding-left: 50px;
 }
 
 .circle {
@@ -22,6 +21,19 @@ body {
   background-color: #941212;
 }
 
+.delete-confirm {
+  display: block;
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(4, 10, 30, 0.8);
+  z-index: 99999;
+}
+
 /*NAVBAR*/
 .navbar {
   background-color: #9e3737;
@@ -40,7 +52,7 @@ body {
 }
 
 /*BOARDS*/
-.boards {
+.boards, .login {
   display: block;
   width: 300px;
   max-height: 500px;
@@ -51,9 +63,18 @@ body {
   transition: top 1s cubic-bezier(.35,-0.34,.47,1);
 }
 
-.boards:target {
+.boards:target, .login:target {
   top: 53px;
   transition: top 1s cubic-bezier(.35,.19,.47,1.33);
+}
+
+/*LOGIN*/
+.login {
+  right: 0;
+}
+
+.login button{
+  display: block;
 }
 
 /*MAIN*/
@@ -68,9 +89,8 @@ body {
   font-size: 30px;
 }
 
-task-main {
-  top: 30px;
-  margin-left: 50px;
+.board {
+  margin: 50px;
 }
 .columns {
   display: inline-block;
@@ -108,7 +128,7 @@ task-main {
 /*PANEL*/
 .panel-placeholder {
   display: block;
-  width: 263px;
+  width: 240px;
   height: 50px;
   margin: 10px 0;
   border: 2px solid #558bb9;
@@ -119,13 +139,12 @@ task-main {
 .panel > .panel-heading {
     background-image: none;
     background-color: #a03939;
-    color: white;
+    color: black;
 }
 
 /*TASK CARD*/
 task-card {
-  position: fixed;
-  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;;
   top: 0;
   right: 0;
   bottom: 0;
@@ -133,7 +152,6 @@ task-card {
   background: rgba(4, 10, 30, 0.8);
   z-index: 99999;
   display: block;
-  /*pointer-events: auto;*/
 }
 
 task-card .card {
@@ -141,17 +159,6 @@ task-card .card {
   position: relative;
   /*top: -1000px;*/
   margin: 10% auto;
-  padding: 5px 20px 13px 20px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: #ffffff;
-  background: -moz-linear-gradient(#ffffff, #cccccc);
-  background: -webkit-linear-gradient(#ffffff, #cccccc);
-  background: -o-linear-gradient(#ffffff, #cccccc);
-  box-shadow: 0 0 10px #000000;
-  -moz-box-shadow: 0 0 10px #000000;
-  -webkit-box-shadow: 0 0 10px #000000;
 }
 
 task-card:target .card {
@@ -165,6 +172,14 @@ task-card:target .card {
   -o-transition-delay: 0.4s;
   -transition-delay: 0.4s;
 }
+
+.card textarea {
+  width: 725px;
+  height: 100px;
+}
+
+
+///////////
 
 :disabled {
     color: graytext;

@@ -1,0 +1,17 @@
+<div class="login" id="login" >
+  <a href="#" class="close">X</a>
+  <h4>Username</h4>
+  <input ng-model="loginController.username"/>
+  <h4>Password</h4>
+  <input ng-model="loginController.password"/>
+  <button type="button" class="btn btn-danger"
+    ng-click="loginController.taskService.signup({username: loginController.username, password: loginController.password})">
+    Sign Up
+  </button>
+  <button type="button" class="btn btn-danger"
+    ng-click="loginController.taskService.login({username: loginController.username, password: loginController.password})">
+    Log In
+  </button>
+  </br>
+  <p ng-show="loginController.taskService.signupError"><b>{{loginController.taskService.signupError}}</b></p>
+</div>

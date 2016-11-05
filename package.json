@@ -22,7 +22,9 @@
     "bootstrap": "^3.3.7",
     "cors": "^2.8.1",
     "jquery": "^3.1.1",
-    "socket.io": "^1.5.1"
+    "jsonwebtoken": "^7.1.9",
+    "socket.io": "^1.5.1",
+    "socketio-jwt": "^4.5.0"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",

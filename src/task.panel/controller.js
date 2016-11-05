@@ -3,9 +3,4 @@ export default class TaskPanelController {
     'ngInject';
   }
 
-  $onDestroy() {
-    // remove event listeners
-    // this.$document.removeEventListener('scroll', this.scrollListener);
-  }
-
 }
