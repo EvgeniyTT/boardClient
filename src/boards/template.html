@@ -35,10 +35,10 @@
       <option value="private">private</option>
       <option></option>
     </select>
-    <button type="button" class="btn btn-danger btn-lg add-column circle"
+    <a href="#" type="button" class="btn btn-danger btn-lg add-column circle"
       ng-click="boardsController.taskService.addBoard(boardsController.newBoard)">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-    </button>
+    </a>
   </div>
   <div ng-show="!boardsController.taskService.user._id">
     <h4>Please login to see boards</h4>
