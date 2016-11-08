@@ -11,6 +11,19 @@ body {
   border-radius: 50%;
 }
 
+.modal-container{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.47);
+  border-radius: 4px;
+}
+
+
 .panel-btn {
   background-image: none;
   background-color: #a03939;
@@ -20,12 +33,15 @@ body {
 .panel-btn:hover {
   background-color: #941212;
 }
-
+.colums-inline{
+  white-space: nowrap;
+}
+task-column{
+    display: inline-block;
+}
 .delete-confirm {
   display: block;
-  position: absolute;
-  width: 300px;
-  height: 200px;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -66,6 +82,7 @@ body {
 .boards:target, .login:target {
   top: 53px;
   transition: top 1s cubic-bezier(.35,.19,.47,1.33);
+  z-index: 100;
 }
 
 /*LOGIN*/
@@ -74,7 +91,7 @@ body {
 }
 
 .login button{
-  display: block;
+  display: inline-block;
 }
 
 /*MAIN*/
@@ -110,11 +127,24 @@ body {
   padding: 15px;
 }
 
-.taskColumn>input {
+.taskColumn-header {
+    position: relative;
+    padding: 10px 0 0;
+}
+
+.taskColumn .taskColumn-header input {
   background-color: #ddd;
   border-style: none;
 }
-.taskColumn>input:focus {
+
+.taskColumn-header .btn {
+    position: absolute;
+    right: 0;
+    top: -100%;
+    margin-top: -10px;
+}
+
+.taskColumn .taskColumn-header input:focus {
   background-color: white;
   border-style: inset;
 }
@@ -144,21 +174,30 @@ body {
 
 /*TASK CARD*/
 task-card {
-  position: absolute;;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(4, 10, 30, 0.8);
-  z-index: 99999;
-  display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(4, 10, 30, 0.8);
+    z-index: 99999;
+    display: block;
+    overflow-y: auto;
+}
+
+task-card .comments {
+    max-height: 300px;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 task-card .card {
-  width: 800px;
-  position: relative;
-  /*top: -1000px;*/
-  margin: 10% auto;
+  max-width: 800px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 task-card:target .card {
@@ -174,8 +213,8 @@ task-card:target .card {
 }
 
 .card textarea {
-  width: 725px;
-  height: 100px;
+  width: 100%;
+  min-height: 100px;
 }
 
 

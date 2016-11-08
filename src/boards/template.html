@@ -21,9 +21,11 @@
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
       </button>
       <div class="delete-confirm" ng-show="deleteConfirmPublic">
-        <p>Remove board "{{board.name}}" ?</p>
-        <button type="button" class="btn btn-danger" ng-click="deleteConfirmPublic = false">Cancel</button>
-        <button type="button" class="btn btn-danger" ng-click="deleteConfirmPublic = false; boardsController.taskService.deleteBoard(board._id)">Remove</button>
+        <div class="modal-container">
+          <p>Remove board "{{board.name}}" ?</p>
+          <button type="button" class="btn btn-danger" ng-click="deleteConfirmPublic = false">Cancel</button>
+          <button type="button" class="btn btn-danger" ng-click="deleteConfirmPublic = false; boardsController.taskService.deleteBoard(board._id)">Remove</button>
+        </div>
       </div>
     </div>
     <h4>Add board</h4>

@@ -32,6 +32,13 @@ export default class taskService {
       })
     });
 
+    this.socket.on(`loginError`, (err) => {
+      console.log('ERROR ON LOGIN: ',err);
+      this.$timeout(() => { // [Evgeniy Tatarin - 10/26/2016] handle digest cycle and render page on data update
+        this.loginError = err;
+      })
+    });
+
     this.socket.on(`signupError`, (err) => {
       this.$timeout(() => { // [Evgeniy Tatarin - 10/26/2016] handle digest cycle and render page on data update
         this.signupError = err;

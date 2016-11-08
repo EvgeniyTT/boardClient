@@ -10,9 +10,11 @@
     </button>
   </div>
   <div class="delete-confirm" ng-show="deleteConfirm">
-    <p>Remove task "{{taskPanelController.task.name}}" ?</p>
-    <button type="button" class="btn btn-danger" ng-click="deleteConfirm = false">Cancel</button>
-    <button type="button" class="btn btn-danger" ng-click="deleteConfirm = false; taskPanelController.deleteTask(this)">Remove</button>
+    <div class="modal-container">
+      <p>Remove task "{{taskPanelController.task.name}}" ?</p>
+      <button type="button" class="btn btn-danger" ng-click="deleteConfirm = false">Cancel</button>
+      <button type="button" class="btn btn-danger" ng-click="deleteConfirm = false; taskPanelController.deleteTask(this)">Remove</button>
+    </div>
   </div>
   <div class="panel-body">
     {{taskPanelController.task.assign}}

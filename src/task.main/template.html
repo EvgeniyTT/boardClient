@@ -5,7 +5,7 @@
   </div>
   <div class="board" ng-show="taskMainController.board.name">
     <h2>{{taskMainController.board.name}}</h2>
-    <div class="row columns" >
+    <div class="row columns colums-inline" >
       <task-column ng-repeat="column in taskMainController.board.data"
         column="column" delete-column="taskMainController.deleteColumn(column)">
       </task-column>
