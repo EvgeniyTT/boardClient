@@ -1,6 +1,4 @@
 import io from 'socket.io-client';
-// const jwt = require('jsonwebtoken');
-// const socketioJwt = require('socketio-jwt');
 
 export default class taskService {
   constructor($http, $timeout) {
@@ -14,44 +12,52 @@ export default class taskService {
     this.board.data = [];
     this.socket = io(this.url);
 
-    this.socket.on(`boardList`, (boards) => {
+    this.socket.on('boardList', (boards) => {
       this.$timeout(() => { // [Evgeniy Tatarin - 10/27/2016] handle digest cycle and render page on data update
         Object.assign(this.boards, boards);
       })
     });
 
-    this.socket.on(`boardData`, (board) => {
+    this.socket.on('boardData', (board) => {
       this.$timeout(() => { // [Evgeniy Tatarin - 10/26/2016] handle digest cycle and render page on data update
         Object.assign(this.board, board);
       })
     });
 
-    this.socket.on(`logged`, (user) => {
+    this.socket.on('logged', (user, token) => {
+      this.token = token;
       this.$timeout(() => { // [Evgeniy Tatarin - 10/26/2016] handle digest cycle and render page on data update
         Object.assign(this.user, user);
       })
     });
 
-    this.socket.on(`loginError`, (err) => {
-      console.log('ERROR ON LOGIN: ',err);
+    this.socket.on('loginError', (err) => {
       this.$timeout(() => { // [Evgeniy Tatarin - 10/26/2016] handle digest cycle and render page on data update
         this.loginError = err;
       })
     });
 
-    this.socket.on(`signupError`, (err) => {
+    this.socket.on('signupError', (err) => {
       this.$timeout(() => { // [Evgeniy Tatarin - 10/26/2016] handle digest cycle and render page on data update
         this.signupError = err;
+      })
+    });
+
+    this.socket.on('internalError', (err) => {
+      console.log('ERROR CAME: ', err);
+      this.$timeout(() => { // [Evgeniy Tatarin - 10/26/2016] handle digest cycle and render page on data update
+        this.error = err;
       })
     });
   }
 
   getBoardsList() {
-    this.socket.emit('getBoardList', this.user);
+    let token = this.token;
+    this.socket.emit('getBoardList', token, this.user);
   }
 
   getBoard(boardID) {
-    this.socket.emit('getBoard', boardID);
+    this.socket.emit('getBoard', this.token, boardID);
   }
 
   addBoard(newBoard) {
@@ -60,16 +66,16 @@ export default class taskService {
     if (newBoard.restriction == 'private') {
       newBoard.users.push(this.user._id)
     }
-    this.socket.emit('addBoard', newBoard, this.user._id);
+    this.socket.emit('addBoard', this.token, newBoard,);
   }
 
   deleteBoard(boardID) {
-    this.socket.emit('deleteBoard', boardID, this.user._id);
+    this.socket.emit('deleteBoard', this.token, boardID);
   }
 
   update() {
     const board = angular.copy(this.board); // [Evgeniy Tatarin - 10/26/2016] remove angular's $$hashKeys
-    this.socket.emit('updateBoard', board)
+    this.socket.emit('updateBoard', this.token, board)
   }
 
   login(userData) {

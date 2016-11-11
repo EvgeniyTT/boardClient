@@ -1,8 +1,12 @@
+let orderByReverse = false;
 
 export default class TaskColumnController {
-  constructor(taskService) {
+  constructor(taskService, $filter, $scope) {
     'ngInject';
+    console.log('CONSTRUCTOR');
     this.taskService = taskService;
+    this.$filter = $filter;
+    this.orderByReverse = orderByReverse;
     this.newTask = {
       name: 'New Task',
       priority: 'Minor',
@@ -19,6 +23,7 @@ export default class TaskColumnController {
       connectWith: ".column",
       stop: (event, ui) => {
         this.taskService.update();
+        this.orderByValue = '';
       }
     };
   }
@@ -29,6 +34,12 @@ export default class TaskColumnController {
 
   deleteTask(task) {
     this.column.tasks = this.column.tasks.filter(item => item != task);
+    this.taskService.update();
+  }
+
+  orderByPriority() {
+    this.column.tasks = this.$filter('orderBy')(this.column.tasks, 'priority', orderByReverse);
+    orderByReverse = !orderByReverse;
     this.taskService.update();
   }
 

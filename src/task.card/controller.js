@@ -6,9 +6,9 @@ export default class TaskCardController {
 
   $onInit() {
     if (this.isNew) {
-      this.taskTemplate = Object.assign({}, this.task); // [Evgeniy Tatarin - 11/05/2016] save new task template to use for all next new tasks
+      this.taskTemplate = JSON.parse(JSON.stringify(this.task)); // [Evgeniy Tatarin - 11/05/2016] save new task template to use for all next new tasks
     }
-    this.taskUpdate = Object.assign({}, this.task);
+    this.taskUpdate = JSON.parse(JSON.stringify(this.task)); // [Evgeniy Tatarin - 11/05/2016] create another object from initial task to apply all changes to it
     this.calculateChecklistProgress();
   }
 
@@ -39,23 +39,25 @@ export default class TaskCardController {
     this.taskUpdate.checklist = this.taskUpdate.checklist.filter(item => item != checkbox);
     this.calculateChecklistProgress();
   }
-  addComment(commentText) {
-    const comment = {author: this.taskService.user.username, date: new Date(), text: commentText};
+  addComment() {
+    const comment = {author: this.taskService.user.username, date: new Date(), text: this.comment};
     this.taskUpdate.comments.unshift(comment);
+    this.comment = '';
   }
   saveTask() {
-    this.task = Object.assign({}, this.taskUpdate); // [Evgeniy Tatarin - 10/26/2016] apply updates to initial task
+    Object.assign(this.task, this.taskUpdate); // [Evgeniy Tatarin - 10/26/2016] apply updates to initial task
     if(this.isNew) {
       this.addTask(this);
-      this.task = Object.assign({}, this.taskTemplate); // [Evgeniy Tatarin - 10/26/2016] reset to initial task template for next new item
-      this.taskUpdate = Object.assign({}, this.task); // [Evgeniy Tatarin - 10/26/2016] reset to initial task template for next new item
+      this.task = JSON.parse(JSON.stringify(this.taskTemplate)); // [Evgeniy Tatarin - 10/26/2016] reset to initial task template for next new item
+      this.taskUpdate = JSON.parse(JSON.stringify(this.task)); // [Evgeniy Tatarin - 10/26/2016] reset to initial task template for next new item
     }
     this.taskService.update();
     this.isCardShown = false;
   }
 
   discardChanges() {
-    this.taskUpdate = Object.assign({}, this.task); // [Evgeniy Tatarin - 10/26/2016] reset to initial task
+    this.comment = '';
+    this.taskUpdate = JSON.parse(JSON.stringify(this.task)); // [Evgeniy Tatarin - 10/26/2016] reset to initial task
     this.isCardShown = false;
   }
 

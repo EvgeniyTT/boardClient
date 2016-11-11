@@ -1,17 +1,27 @@
 <div class="taskColumn">
   <div class="taskColumn-header">
     <input type="text" ng-model="taskColumnController.column.columnName" ng-blur="taskColumnController.taskService.update()"/>
-    <button type="button" class="btn btn-danger circle" ng-click="deleteConfirm = true">
+    <button type="button" class="btn orederBy" ng-click="taskColumnController.orderByPriority()">
+      <span
+        class="glyphicon glyphicon-sort-by-attributes"
+        aria-hidden="true">
+      </span>
+    </button>
+    <button type="button" class="btn btn-danger circle-big delete" ng-click="deleteConfirm = true">
       <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
     </button>
   </div>
   <div class="taskColumn-body">
     <ul class="column" ui-sortable="taskColumnController.sortableOptions" ng-model="taskColumnController.column.tasks">
-      <task-panel ng-repeat="task in taskColumnController.column.tasks" task="task" delete-task="taskColumnController.deleteTask(task)"></task-panel>
+      <task-panel
+        ng-repeat="task in taskColumnController.column.tasks"
+        task="task"
+        delete-task="taskColumnController.deleteTask(task)">
+      </task-panel>
     </ul>
   </div>
   <div class="taskColumn-footer">
-    <button type="button" class="btn btn-danger circle" ng-click="isCardShown = true">
+    <button type="button" class="btn btn-danger circle-big" ng-click="isCardShown = true">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </button>
   </div>

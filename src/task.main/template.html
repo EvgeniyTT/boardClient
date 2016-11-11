@@ -10,7 +10,16 @@
         column="column" delete-column="taskMainController.deleteColumn(column)">
       </task-column>
     </div>
-    <button type="button" class="btn btn-default btn-lg add-column" ng-click="taskMainController.addColumn()">
+    <button type="button" class="btn btn-default add-column circle-big" ng-click="taskMainController.addColumn()">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </button>
+  </div>
+
+  <div class="error" ng-show="taskMainController.taskService.error.name">
+    <div class="modal-container">
+      <p><b>Something bad happened. Please contact support team. Error: {{taskMainController.taskService.error.name}}</b></p>
+      <p>{{taskMainController.taskService.error.message}}</p>
+      </br></br>
+      <button ng-click="taskMainController.taskService.error={}">Close</button>
+    </div>
   </div>
