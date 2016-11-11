@@ -44,7 +44,6 @@ export default class taskService {
     });
 
     this.socket.on('internalError', (err) => {
-      console.log('ERROR CAME: ', err);
       this.$timeout(() => { // [Evgeniy Tatarin - 10/26/2016] handle digest cycle and render page on data update
         this.error = err;
       })

@@ -9,8 +9,7 @@ export default class NavbarController {
 
   logout() {
       this.taskService.user = {};
-      this.taskService.board.name = undefined; // [Evgeniy Tatatrin - 11/08/2016] hide board template as far it looks at board's name exist
-      this.taskService.board = {};
+      Object.keys(this.taskService.board).forEach((key) => { delete this.taskService.board[key]; }); // [Evgeniy Tatatrin - 11/1/2016] make board object empty with saving reference to the initial object
   }
 
 }

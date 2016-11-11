@@ -1,5 +1,5 @@
 <div class="login" id="login" >
-  <a href="#" class="close">X</a>
+  <a href="#" class="close" ng-click="loginController.reset()">X</a>
   <p>{{angular.toString()}}</p>
   <h4>Username</h4>
   <input ng-model="loginController.username"/>
@@ -7,11 +7,11 @@
   <input ng-model="loginController.password"/>
   </br></br>
   <button type="button" class="btn btn-danger"
-    ng-click="loginController.taskService.signup({username: loginController.username, password: loginController.password})">
+    ng-click="loginController.signUp()">
     Sign Up
   </button>
   <button type="button" class="btn btn-danger"
-    ng-click="loginController.taskService.login({username: loginController.username, password: loginController.password})">
+    ng-click="loginController.logIn()">
     Log In
   </button>
   </br></br>
