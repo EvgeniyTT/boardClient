@@ -3,6 +3,7 @@ export default class BoardsController {
     'ngInject';
     this.taskService = taskService;
     this.newBoard = {};
+    this.newBoard.restriction = 'private';
   }
 
   $onInit() {
