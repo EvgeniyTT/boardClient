@@ -29,7 +29,7 @@ module.exports = {
       inject: 'body'
     }),
     new webpack.DefinePlugin({
-      API_HOST: JSON.stringify('http://10.10.54.24:3040')
+      API_HOST: JSON.stringify('http://jsui.nixdev.co:3040')
     })
   ]
 };
