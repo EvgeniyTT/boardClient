@@ -7,7 +7,7 @@
     <div class="privateBoards">
         <div class="board-item" ng-repeat="board in boardsController.boards.private | filter : searchFilter">
           <a href="#" ng-click="boardsController.taskService.getBoard(board._id)">{{board.name}}</a>
-          <button type="button" class="btn btn-danger circle-small" ng-click="deleteConfirmPrivate = true">
+          <button type="button" class="btn btn-danger circle-small remove" ng-click="deleteConfirmPrivate = true">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
           </button>
           <div class="delete-confirm" ng-show="deleteConfirmPrivate">
@@ -24,7 +24,7 @@
     <div class="publicBoards">
       <div class="board-item" ng-repeat="board in boardsController.boards.public | filter : searchFilter">
         <a href="#" ng-click="boardsController.taskService.getBoard(board._id)">{{board.name}}</a>
-        <button type="button" class="btn btn-danger circle-small" ng-click="deleteConfirmPublic = true">
+        <button type="button" class="btn btn-danger circle-small remove" ng-click="deleteConfirmPublic = true">
           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
         </button>
         <div class="delete-confirm" ng-show="deleteConfirmPublic">

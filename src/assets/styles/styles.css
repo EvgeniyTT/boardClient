@@ -128,7 +128,7 @@ task-column{
   background-color: #a03939;
 }
 
-.board-item button {
+.board-item button.remove {
   position: absolute;
   right: 10px;
   top: 0;
