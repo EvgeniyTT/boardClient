@@ -8,7 +8,7 @@ module.exports = {
   context: path.resolve(__dirname, 'src'), // source directory
   entry: ['babel-polyfill', './index.js'],
   output: {
-    path: './build', // output directory
+    path: './', // output directory
     filename: 'build-[hash:4].js'
   },
   module: {
@@ -29,7 +29,7 @@ module.exports = {
       inject: 'body'
     }),
     new webpack.DefinePlugin({
-      API_HOST: JSON.stringify('http://jsui.nixdev.co:3040')
+      API_HOST: JSON.stringify('https://boardello-api.herokuapp.com/')
     })
   ]
 };

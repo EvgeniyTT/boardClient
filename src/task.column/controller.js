@@ -3,7 +3,6 @@ let orderByReverse = false;
 export default class TaskColumnController {
   constructor(taskService, $filter, $scope) {
     'ngInject';
-    console.log('CONSTRUCTOR');
     this.taskService = taskService;
     this.$filter = $filter;
     this.orderByReverse = orderByReverse;
